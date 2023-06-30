@@ -79,7 +79,6 @@
 
                     <div class="buttons text-center">
 
-                        <input type="" name="" id="" class="btn btn-secondary">
                         <input type="submit" name="" id="" class="btn btn-secondary ">
 
                     </div>
