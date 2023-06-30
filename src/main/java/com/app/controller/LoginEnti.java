@@ -1,5 +1,6 @@
 package com.app.controller;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 //import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,15 +22,31 @@ public class LoginEnti extends HttpServlet {
 		String entePassword = request.getParameter("Password");
 
 //		faccio la verifica dell' email e della password con questo oggetto
+		CheckLogin_Enti checkUser = new CheckLogin_Enti();
 
-		CheckLogin_Enti check = new CheckLogin_Enti();
+		// SESSION = prima crei l'oggetto session, poi lo setti dove ti serve, e poi lo
+		// richiami nella pagina dove ti serve
+
+		HttpSession session = request.getSession();
 
 		try {
-			check.Controllo_Credenziali(enteEmail, entePassword);
+
+			boolean checkConfirmed = checkUser.Controllo_Credenziali(enteEmail, entePassword);
+
+			if (checkConfirmed) {
+				RequestDispatcher dispatch = request.getRequestDispatcher("form.html");
+				session.setAttribute("loginUserEmail", enteEmail);
+				session.setAttribute("loginUserPass", entePassword);
+				dispatch.forward(request, response);
+			} else {
+				response.sendRedirect("Enti-Login.html");
+			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("errore");
 		}
+
 	}
 
 }

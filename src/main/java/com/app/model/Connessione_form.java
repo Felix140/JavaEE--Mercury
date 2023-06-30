@@ -65,6 +65,7 @@ public class Connessione_form {
 			statement.setString(6, this.comuneEvento);
 //			descrizione evento
 			statement.setString(7, this.descrizioneEvento);
+			
 
 			// executeUpdate() ->
 			statement.executeUpdate();

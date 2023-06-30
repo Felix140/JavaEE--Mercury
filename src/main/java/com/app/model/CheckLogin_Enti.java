@@ -6,11 +6,11 @@ public class CheckLogin_Enti {
 
 	private String url = "jdbc:mysql://localhost:3306/mercury";
 	public Connection connect = null;
-
 	String emailEnte;
 	String passwordEnte;
 
-	public void Controllo_Credenziali(String enteEmail, String entePassword) throws SQLException {
+	// lo trasformo in un booleano
+	public boolean Controllo_Credenziali(String enteEmail, String entePassword) throws SQLException {
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -32,11 +32,15 @@ public class CheckLogin_Enti {
 				System.out.println("Accesso effettuato");
 				System.out.println("Email: " + email);
 				System.out.println("Password: " + password);
-
+				
+				return true;
+				
 			} else {
 				System.out.println("Credenziali errate");
 			}
 		}
 		connect.close();
+		return false;
 	}
+	
 }
