@@ -19,7 +19,7 @@ public class CheckLogin_Admin {
 		}
 		
 		
-		connect = DriverManager.getConnection(url, "root", "RootPass");
+		connect = DriverManager.getConnection(url, "root", "user_mysql_14");
 		Statement query = connect.createStatement();
 		ResultSet result = query.executeQuery("Select*from admin");
 		

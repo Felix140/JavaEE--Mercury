@@ -36,7 +36,7 @@ public class Registrazione_Enti {
 
 			String urlDB = "jdbc:mysql://localhost:3306/mercury";
 			String userName = "root";
-			String password = "RootPass";
+			String password = "user_mysql_14";
 
 			connection = DriverManager.getConnection(urlDB, userName, password);
 

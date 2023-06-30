@@ -19,7 +19,7 @@ public class CheckLogin_Enti {
 			System.out.println("Non trovo la classe Driver");
 		}
 
-		connect = DriverManager.getConnection(url, "root", "RootPass");
+		connect = DriverManager.getConnection(url, "root", "user_mysql_14");
 		Statement query = connect.createStatement();
 		ResultSet result = query.executeQuery("Select*from enti");
 
