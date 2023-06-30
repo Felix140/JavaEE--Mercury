@@ -34,6 +34,7 @@ public class LoginEnti extends HttpServlet {
 			boolean checkConfirmed = checkUser.Controllo_Credenziali(enteEmail, entePassword);
 
 			if (checkConfirmed) {
+				// Spedisci
 				RequestDispatcher dispatch = request.getRequestDispatcher("form.html");
 				session.setAttribute("loginUserEmail", enteEmail);
 				session.setAttribute("loginUserPass", entePassword);

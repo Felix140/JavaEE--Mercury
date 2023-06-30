@@ -9,7 +9,7 @@ public class CheckLogin_Admin {
 	String nomeAdmin;
 	String passwordAdmin;
 	
-	public void Controllo_Credenziali(String nomeAdmin, String passwordAdmin) throws SQLException {
+	public boolean Controllo_Credenziali(String nomeAdmin, String passwordAdmin) throws SQLException {
 	
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -34,6 +34,8 @@ public class CheckLogin_Admin {
 				System.out.println("Accesso effettuato come Amministratore");
 				System.out.println("Nome: " + admin);
 				System.out.println("Password: " + password);
+				
+				return true;
 
 			} else {
 				System.out.println("Credenziali errate");
@@ -41,5 +43,6 @@ public class CheckLogin_Admin {
 		}
 
 		connect.close();
+		return false;
 	}	
 }

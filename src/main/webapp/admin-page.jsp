@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" import="java.util.*" import="com.app.model.*"%>
 <!DOCTYPE html>
 <html>
 
@@ -41,6 +43,10 @@
 </head>
 
 <body>
+    <% 
+    // faccio prima il cast
+    String adminName = (String)session.getAttribute("NomeAdmin");
+    %>
 
 
 	<!-- Header -->
@@ -53,7 +59,7 @@
 	</header>
 
 	<div class="welcome-bar">
-		<h2 class="d-block m-auto">Benvenuta/a</h2>
+		<h2 class="d-block m-auto">Benvenuta/o <%= adminName %></h2>
 	</div>
 
 	<div class="container__panoramica">
