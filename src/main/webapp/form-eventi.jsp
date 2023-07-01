@@ -70,6 +70,15 @@
 			height: 300px;
 			border: 3px solid red;
 			}
+
+
+			.buttons {
+				display: flex;
+				border: 3px solid rgb(64, 0, 255);
+				justify-content: center;
+				column-gap: 20px;
+
+			}
 		</style>
 
 
@@ -149,7 +158,7 @@
 					<label for="descrizione" class="form-label">Descrizione
 						dell'evento</label>
 					<textarea class="form-control" id="descrizione" name="Descrizione_Evento" rows="3"
-						placeholder="Inserisci una descrizione dell'evento" style="resize: none;"></textarea>
+						placeholder="Inserisci una descrizione dell'evento (max 150 caratteri)" style="resize: none;" maxlength="150"></textarea>
 				</div>
 
 				<!-- Preview -->
@@ -171,7 +180,11 @@
 				</div>
 
 				<!-- Invia Form -->
-				<button type="submit" class="btn btn-primary mx-auto d-block">Pubblica l'evento</button>
+				<div class="buttons">
+					<button type="reset" class="btn btn-light">Resetta Form</button>
+					<button type="submit" class="btn btn-primary">Pubblica l'evento</button>
+				</div>
+		
 			</form>
 
 		<!-- CONTAINER RCHIESTE RICEVUTE -->
@@ -187,12 +200,6 @@
 		<footer class="w3-container w3-theme-dark w3-padding-16 footer">
 			<h3>Footer</h3>
 		</footer>
-
-	
-	
-	
-	
-	
 
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"

@@ -62,6 +62,7 @@
 	</div>
 
 	<div class="container__panoramica">
+		
 	</div>
 
 	<div class="divisore"></div>
