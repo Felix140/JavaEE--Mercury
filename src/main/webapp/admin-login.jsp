@@ -18,7 +18,6 @@
             .risultati {
                 background-color: wheat;
                 height: 100px;
-
                 display: flex;
                 flex-direction: row;
                 justify-content: center;

@@ -1,5 +1,6 @@
 package com.app.controller;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 //import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -26,8 +27,7 @@ public class CreazioneForm extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-//		PrintWriter print = response.getWriter();
-
+//		getparameter prende dall'attributo NAME
 		String nomeEvento = request.getParameter("Nome_Evento");
 		String dataEvento = request.getParameter("Data_Evento");
 		String orarioEvento = request.getParameter("Ora_Evento");
@@ -41,6 +41,8 @@ public class CreazioneForm extends HttpServlet {
 
 		formConnection.Inserimento_Dati_Form(nomeEvento, dataEvento, orarioEvento, regioneEvento, provinciaEvento,
 				comuneEvento, descrizioneEvento);
+		
+	
 
 	}
 
