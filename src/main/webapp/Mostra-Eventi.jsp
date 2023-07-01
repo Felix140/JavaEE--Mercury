@@ -21,6 +21,30 @@
 h3 {
 	font-weight: 600;
 }
+
+.header {
+	background-color: black;
+	color: white;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.container__ricerca {
+	border: 3px solid red;
+	width: 300px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+
+	margin: 20px 0;
+}
+
 .footer {
 	height: 500px;
 }
@@ -50,7 +74,6 @@ h3 {
 	row-gap: 20px;
 }
 
-
 .w3-card {
 	min-width: 300px;
 	background-color: wheat;
@@ -60,6 +83,11 @@ h3 {
 	background-color: wheat;
 	height: 100px;
 }
+
+.footer {
+	background-color: black;
+	color: white;
+}
 </style>
 
 <title>Mercury</title>
@@ -68,57 +96,92 @@ h3 {
 <body>
 
 	<!-- Header -->
-	<header class="w3-container w3-theme w3-padding" id="myHeader">
+	<header>
 
-		<div class="w3-center">
+		<div class="header">
 			<h4>GLI EVENTI COME NON LI AVEVI MAI CERCATI...</h4>
-			<h1 class="w3-xxxlarge">MERCURY</h1>
+			<h1 class="title">MERCURY</h1>
 
-			<div class="cerca__evento ">
-				<div class="dropdown">
-					<button class="btn btn-secondary dropdown-toggle" type="button"
-						data-bs-toggle="dropdown" aria-expanded="false">REGIONE</button>
-					<ul class="dropdown-menu">
-						<li><button class="dropdown-item" type="button">Action</button></li>
-						<li><button class="dropdown-item" type="button">Another
-								action</button></li>
-						<li><button class="dropdown-item" type="button">Something
-								else here</button></li>
-					</ul>
-				</div>
+			<div class="container__ricerca mt-5">
+				<h4>Cerca il luogo dell'evento</h4>
 
-				<div class="dropdown">
-					<button class="btn btn-secondary dropdown-toggle" type="button"
-						data-bs-toggle="dropdown" aria-expanded="false">
-						PROVINCIA</button>
-					<ul class="dropdown-menu">
-						<li><button class="dropdown-item" type="button">Action</button></li>
-						<li><button class="dropdown-item" type="button">Another
-								action</button></li>
-						<li><button class="dropdown-item" type="button">Something
-								else here</button></li>
-					</ul>
-				</div>
+				<!-- Menu a tendina Regione -->
+				<select class="form-select mt-3" id="selectRegione"
+					aria-label="Seleziona Regione">
+					<option default>Regione</option>
+					<!-- Seleziona unica regione -->
+					<%
+					Set<String> regioniUniche = new HashSet<>();
 
-				<div class="dropdown">
-					<button class="btn btn-secondary dropdown-toggle" type="button"
-						data-bs-toggle="dropdown" aria-expanded="false">COMUNE</button>
-					<ul class="dropdown-menu">
-						<li><button class="dropdown-item" type="button">Action</button></li>
-						<li><button class="dropdown-item" type="button">Another
-								action</button></li>
-						<li><button class="dropdown-item" type="button">Something
-								else here</button></li>
-					</ul>
+					ArrayList<Eventi> regione = new ArrayList<>();
 
-				</div>
+					regione = (ArrayList<Eventi>) request.getAttribute("admin-all");
+
+					for (int i = 0; i < regione.size(); i++) {
+						regioniUniche.add(regione.get(i).getRegioneEvento());
+					}
+
+					for (String regioneUnica : regioniUniche) {
+						out.println("<option>" + regioneUnica + "</option>");
+					}
+					%>
+				</select>
+
+				<!-- Menu a tendina Provincia -->
+				<select class="form-select mt-3" id="selectProvincia"
+					aria-label="Seleziona Provincia">
+					<option default>Provincia</option>
+					<%
+					Set<String> provinceUniche = new HashSet<>();
+
+					ArrayList<Eventi> provincia = new ArrayList<>();
+
+					provincia = (ArrayList<Eventi>) request.getAttribute("admin-all");
+
+					for (int i = 0; i < provincia.size(); i++) {
+						provinceUniche.add(provincia.get(i).getProvinciaEvento());
+					}
+
+					for (String provinciaUnica : provinceUniche) {
+						out.println("<option>" + provinciaUnica + "</option>");
+					}
+					%>
+				</select>
+
+				<!-- Menu a tendina Comune -->
+				<select class="form-select mt-3" id="selectComune"
+					aria-label="Seleziona Comune">
+					<option default>Comune</option>
+					<%
+					Set<String> comuniUnici = new HashSet<>();
+
+					ArrayList<Eventi> comune = new ArrayList<>();
+
+					comune = (ArrayList<Eventi>) request.getAttribute("admin-all");
+
+					for (int i = 0; i < comune.size(); i++) {
+						comuniUnici.add(comune.get(i).getComuneEvento());
+					}
+
+					for (String comuneUnico : comuniUnici) {
+						out.println("<option>" + comuneUnico + "</option>");
+					}
+					%>
+				</select>
+
+
+
 			</div>
+
+
+		</div>
+
+
 		</div>
 	</header>
 
 	<div class="risultati">
 		<h2>Risultati della ricerca:</h2>
-		<nav></nav>
 	</div>
 
 	<nav></nav>
@@ -132,8 +195,9 @@ h3 {
 			event = (ArrayList<Eventi>) request.getAttribute("admin-all");
 
 			for (int i = 0; i < event.size(); i++) {
+
 				out.println("<div class=\"w3-card w3-container\">");
-				out.println("<h3>" +  event.get(i).getNomeEvento() + "</h3>");
+				out.println("<h3>" + event.get(i).getNomeEvento() + "</h3>");
 				out.println("<div class=\"info\">");
 				out.println("<p>" + event.get(i).getDataEvento() + "</p>");
 				out.println("<p>" + event.get(i).getOrarioEvento() + "</p>");
@@ -150,18 +214,14 @@ h3 {
 	</div>
 
 	<!-- Footer -->
-	<footer class="w3-container w3-theme-dark w3-padding-16 footer">
+	<footer class="footer">
 		<h3>Footer</h3>
 	</footer>
-
-	<!-- Script for Sidebar, Tabs, Accordions, Progress bars and slideshows -->
-
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
 		crossorigin="anonymous"></script>
-
 </body>
 
 </html>
