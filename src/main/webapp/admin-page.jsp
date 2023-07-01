@@ -38,6 +38,7 @@
 			height: 400px;
 		}
 	</style>
+	
 	<title>Admin Page</title>
 </head>
 

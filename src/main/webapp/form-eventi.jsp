@@ -65,10 +65,10 @@
 				margin: 0 auto;
 				padding: 10px 20px;
 			}
-			
+
 			.container__richieste {
-			height: 300px;
-			border: 3px solid red;
+				height: 300px;
+				border: 3px solid red;
 			}
 
 
@@ -80,16 +80,8 @@
 
 			}
 		</style>
-
-
-		<!-- Aggiungi script JavaScript per la preview -->
-		<script>
-			// Funzione per aggiornare la preview live
-			function updatePreview(inputElement, previewElementId) {
-				var value = inputElement.value;
-				document.getElementById(previewElementId).textContent = value;
-			}
-		</script>
+		<!-- CSS -->
+		<link rel="stylesheet" href="assets/css/style.css">
 
 	</head>
 
@@ -158,7 +150,8 @@
 					<label for="descrizione" class="form-label">Descrizione
 						dell'evento</label>
 					<textarea class="form-control" id="descrizione" name="Descrizione_Evento" rows="3"
-						placeholder="Inserisci una descrizione dell'evento (max 150 caratteri)" style="resize: none;" maxlength="150"></textarea>
+						placeholder="Inserisci una descrizione dell'evento (max 150 caratteri)" style="resize: none;"
+						maxlength="150"></textarea>
 				</div>
 
 				<!-- Preview -->
@@ -184,17 +177,17 @@
 					<button type="reset" class="btn btn-light">Resetta Form</button>
 					<button type="submit" class="btn btn-primary">Pubblica l'evento</button>
 				</div>
-		
+
 			</form>
 
-		<!-- CONTAINER RCHIESTE RICEVUTE -->
-		<div class="container__richieste">
-			<!-- Qui va connesso alla SERVLET e NON alla JSP -->
-			<a href="Event_Servlet">Vedi gli eventi</a>
+			<!-- CONTAINER RCHIESTE RICEVUTE -->
+			<div class="container__richieste">
+				<!-- Qui va connesso alla SERVLET e NON alla JSP -->
+				<a href="Event_Servlet">Vedi gli eventi</a>
+			</div>
+
+
 		</div>
-
-
-	</div>
 
 		<!-- Footer -->
 		<footer class="w3-container w3-theme-dark w3-padding-16 footer">
@@ -208,6 +201,12 @@
 
 		<!-- Aggiungi event listener per gli input per chiamare la funzione di aggiornamento -->
 		<script>
+
+			// Funzione per aggiornare la preview live
+			function updatePreview(inputElement, previewElementId) {
+				var value = inputElement.value;
+				document.getElementById(previewElementId).textContent = value;
+			}
 			// Aggiungi event listener per gli input per chiamare la funzione di aggiornamento
 			document.getElementById("Nome_Evento").addEventListener("input", function () {
 				updatePreview(this, "previewNomeEvento");
