@@ -23,7 +23,7 @@ public class Connessione_form {
 	String comuneEvento;
 	String descrizioneEvento;
 
-	public void Inserimento_Dati_Form(String a, String b, String c, String d, String e, String f, String g) {
+	public boolean Inserimento_Dati_Form(String a, String b, String c, String d, String e, String f, String g) {
 
 		this.nomeEvento = a;
 		this.dataEvento = b;
@@ -62,6 +62,7 @@ public class Connessione_form {
 			// chiudi la connessione
 			connection.close();
 			
+			return true;
 
 		} catch (SQLException z) {
 
@@ -73,7 +74,7 @@ public class Connessione_form {
 			System.out.println("Non trovo la classe Driver");
 		}
 		
-		
+		return false;
 	}
 
 }

@@ -11,17 +11,9 @@
 	integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
 	crossorigin="anonymous">
 
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet"
-	href="https://www.w3schools.com/lib/w3-theme-black.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
-
 <style>
-h3 {
-	font-weight: 600;
-}
 
+/* SearchField */
 .header {
 	background-color: black;
 	color: white;
@@ -32,9 +24,28 @@ h3 {
 	align-items: center;
 }
 
+.header__searchField {
+	border: 3px solid rgb(0, 30, 255);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	min-width: 350px;
+}
+
+.form-select {
+	width: 200px;
+}
+
+.header__searchBtn {
+	width: 100%;
+	margin-top: 30px;
+}
+
 .container__ricerca {
 	border: 3px solid red;
-	width: 300px;
+	
 
 	display: flex;
 	flex-direction: column;
@@ -45,25 +56,20 @@ h3 {
 	margin: 20px 0;
 }
 
+/* Footer */
+
 .footer {
 	height: 500px;
 }
 
-.cerca__evento {
-	display: flex;
-	/* border: 3px solid white; */
-	flex-direction: row;
-	justify-content: space-between;
-	width: 400px;
-	margin: auto;
-	margin-top: 40px;
-}
 
-.w3-center {
-	padding: 50px;
-}
 
-.cards {
+
+
+/* CARDS */
+
+
+.card__section {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -72,11 +78,27 @@ h3 {
 	border: 3px solid red;
 	flex-wrap: wrap;
 	row-gap: 20px;
+
+	padding: 30px 20px;
 }
 
-.w3-card {
-	min-width: 300px;
+.card__preview {
 	background-color: wheat;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+
+	background-color: wheat;
+	border-radius: 20px;
+	min-width: 300px;
+	padding: 10px 20px;
+	contain: content;
+}
+
+.card__title {
+	font-weight: 600;
 }
 
 .risultati {
@@ -105,77 +127,92 @@ h3 {
 			<div class="container__ricerca mt-5">
 				<h4>Cerca il luogo dell'evento</h4>
 
-				<!-- Menu a tendina Regione -->
-				<select class="form-select mt-3" id="selectRegione"
-					aria-label="Seleziona Regione">
-					<option default>Regione</option>
-					<!-- Seleziona unica regione -->
-					<%
-					Set<String> regioniUniche = new HashSet<>();
+				<!-- FORM -->
 
-					ArrayList<Eventi> regione = new ArrayList<>();
+				<form action="" id="searchForm">
 
-					regione = (ArrayList<Eventi>) request.getAttribute("admin-all");
+					<!-- Menu a tendina Regione -->
+					<div class="header__searchField">
+						<label for="selectRegione">Regione:</label>
+						<select class="form-select mt-3" id="selectRegione"
+							aria-label="Seleziona Regione">
+							<option default>Regione</option>
+							<!-- Seleziona unica regione -->
+							<%
+							Set<String> regioniUniche = new HashSet<>();
 
-					for (int i = 0; i < regione.size(); i++) {
-						regioniUniche.add(regione.get(i).getRegioneEvento());
-					}
+							ArrayList<Eventi> regione = new ArrayList<>();
 
-					for (String regioneUnica : regioniUniche) {
-						out.println("<option>" + regioneUnica + "</option>");
-					}
-					%>
-				</select>
+							regione = (ArrayList<Eventi>) request.getAttribute("admin-all");
 
-				<!-- Menu a tendina Provincia -->
-				<select class="form-select mt-3" id="selectProvincia"
-					aria-label="Seleziona Provincia">
-					<option default>Provincia</option>
-					<%
-					Set<String> provinceUniche = new HashSet<>();
+							for (int i = 0; i < regione.size(); i++) {
+								regioniUniche.add(regione.get(i).getRegioneEvento());
+							}
 
-					ArrayList<Eventi> provincia = new ArrayList<>();
+							for (String regioneUnica : regioniUniche) {
+								out.println("<option>" + regioneUnica + "</option>");
+							}
+							%>
+						</select>
+					</div>
 
-					provincia = (ArrayList<Eventi>) request.getAttribute("admin-all");
+					<!-- Menu a tendina Provincia -->
+					<div class="header__searchField">
+						<label for="selectProvincia">Provincia:</label>
 
-					for (int i = 0; i < provincia.size(); i++) {
-						provinceUniche.add(provincia.get(i).getProvinciaEvento());
-					}
+						<select class="form-select mt-3" id="selectProvincia"
+							aria-label="Seleziona Provincia">
+							<option default>Provincia</option>
+							<%
+							Set<String> provinceUniche = new HashSet<>();
 
-					for (String provinciaUnica : provinceUniche) {
-						out.println("<option>" + provinciaUnica + "</option>");
-					}
-					%>
-				</select>
+							ArrayList<Eventi> provincia = new ArrayList<>();
 
-				<!-- Menu a tendina Comune -->
-				<select class="form-select mt-3" id="selectComune"
-					aria-label="Seleziona Comune">
-					<option default>Comune</option>
-					<%
-					Set<String> comuniUnici = new HashSet<>();
+							provincia = (ArrayList<Eventi>) request.getAttribute("admin-all");
 
-					ArrayList<Eventi> comune = new ArrayList<>();
+							for (int i = 0; i < provincia.size(); i++) {
+								provinceUniche.add(provincia.get(i).getProvinciaEvento());
+							}
 
-					comune = (ArrayList<Eventi>) request.getAttribute("admin-all");
+							for (String provinciaUnica : provinceUniche) {
+								out.println("<option>" + provinciaUnica + "</option>");
+							}
+							%>
+						</select>
+					</div>
 
-					for (int i = 0; i < comune.size(); i++) {
-						comuniUnici.add(comune.get(i).getComuneEvento());
-					}
+					<!-- Menu a tendina Comune -->
+					<div class="header__searchField">
+						<label for="selectComune">Comune:</label>
 
-					for (String comuneUnico : comuniUnici) {
-						out.println("<option>" + comuneUnico + "</option>");
-					}
-					%>
-				</select>
+						<select class="form-select mt-3" id="selectComune"
+							aria-label="Seleziona Comune">
+							<option default>Comune</option>
+							<%
+							Set<String> comuniUnici = new HashSet<>();
 
+							ArrayList<Eventi> comune = new ArrayList<>();
 
+							comune = (ArrayList<Eventi>) request.getAttribute("admin-all");
 
+							for (int i = 0; i < comune.size(); i++) {
+								comuniUnici.add(comune.get(i).getComuneEvento());
+							}
+
+							for (String comuneUnico : comuniUnici) {
+								out.println("<option>" + comuneUnico + "</option>");
+							}
+							%>
+						</select>
+					</div>
+
+					
+					<input type="submit" name="" id="search" value="cerca" class="btn btn-secondary header__searchBtn">
+					
+
+				</form>
 			</div>
-
-
 		</div>
-
 
 		</div>
 	</header>
@@ -184,34 +221,32 @@ h3 {
 		<h2>Risultati della ricerca:</h2>
 	</div>
 
-	<nav></nav>
-
 	<!-- Cards -->
-	<div class="card__container w3-row-padding w3-center w3-margin-top">
-		<div class="w3-third cards">
 
-			<%
-			ArrayList<Eventi> event = new ArrayList<>();
-			event = (ArrayList<Eventi>) request.getAttribute("admin-all");
+	<div class="card__section">
 
-			for (int i = 0; i < event.size(); i++) {
+		<%
+		ArrayList<Eventi> event = new ArrayList<>();
+		event = (ArrayList<Eventi>) request.getAttribute("admin-all");
 
-				out.println("<div class=\"w3-card w3-container\">");
-				out.println("<h3>" + event.get(i).getNomeEvento() + "</h3>");
-				out.println("<div class=\"info\">");
-				out.println("<p>" + event.get(i).getDataEvento() + "</p>");
-				out.println("<p>" + event.get(i).getOrarioEvento() + "</p>");
-				out.println("<p>" + event.get(i).getRegioneEvento() + "</p>");
-				out.println("<p>" + event.get(i).getProvinciaEvento() + "</p>");
-				out.println("<p>" + event.get(i).getComuneEvento() + "</p>");
-				out.println("<p>" + event.get(i).getDescrizioneEvento() + "</p>");
-				out.println("</div>");
-				out.println("</div>");
-			}
-			%>
+		for (int i = 0; i < event.size(); i++) {
 
-		</div>
+			out.println("<div class=\"card__preview\">");
+			out.println("<h3 class=\"card__title\">" + event.get(i).getNomeEvento() + "</h3>");
+			out.println("<div class=\"card__info\">");
+			out.println("<p>" + event.get(i).getDataEvento() + "</p>");
+			out.println("<p>" + event.get(i).getOrarioEvento() + "</p>");
+			out.println("<p>" + event.get(i).getRegioneEvento() + "</p>");
+			out.println("<p>" + event.get(i).getProvinciaEvento() + "</p>");
+			out.println("<p>" + event.get(i).getComuneEvento() + "</p>");
+			out.println("<p>" + event.get(i).getDescrizioneEvento() + "</p>");
+			out.println("</div>");
+			out.println("</div>");
+		}
+		%>
+
 	</div>
+
 
 	<!-- Footer -->
 	<footer class="footer">

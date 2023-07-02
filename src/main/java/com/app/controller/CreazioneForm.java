@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+import java.util.ArrayList;
 
 // importo la classe Connessione_form
 import com.app.model.*;
@@ -39,9 +39,26 @@ public class CreazioneForm extends HttpServlet {
 //		creazione oggetto della connessione Form
 		Connessione_form formConnection = new Connessione_form();
 
-		formConnection.Inserimento_Dati_Form(nomeEvento, dataEvento, orarioEvento, regioneEvento, provinciaEvento,
+		boolean formConfirmed = formConnection.Inserimento_Dati_Form(nomeEvento, dataEvento, orarioEvento, regioneEvento, provinciaEvento,
 				comuneEvento, descrizioneEvento);
 		
+		
+
+		
+		if (formConfirmed) {
+
+			EventiImplementation evimp = new EventiImplementation();
+			ArrayList<Eventi> event = new ArrayList<>();
+			event = evimp.getAll();
+			request.setAttribute("admin-all", event);
+			
+			
+			RequestDispatcher dispatch = request.getRequestDispatcher("mostra-eventi.jsp");
+			dispatch.forward(request, response);
+			
+		} else {
+			response.sendRedirect("form-eventi.jsp");
+		}
 	
 
 	}

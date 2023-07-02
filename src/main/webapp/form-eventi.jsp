@@ -36,13 +36,14 @@
 				padding: 30px 0;
 			}
 
+			/* Preview */
 
-
-			.container__preview {
+			.preview {
 				display: flex;
 				width: 100%;
 				flex-direction: column;
 				justify-content: center;
+				align-items: center;
 
 				margin: 40px 0;
 
@@ -56,15 +57,24 @@
 
 			.card__preview {
 				display: flex;
-
+				flex-direction: column;
+				justify-content: center;
+				align-items: flex-start;
 
 				background-color: wheat;
 				border-radius: 20px;
 				width: 400px;
-
-				margin: 0 auto;
 				padding: 10px 20px;
+				contain: content;
+			
 			}
+
+			.info {
+				border: 2px solid red;
+				min-width: 200px;
+			}
+
+			/*  */
 
 			.container__richieste {
 				height: 300px;
@@ -80,8 +90,6 @@
 
 			}
 		</style>
-		<!-- CSS -->
-		<link rel="stylesheet" href="assets/css/style.css">
 
 	</head>
 
@@ -155,7 +163,7 @@
 				</div>
 
 				<!-- Preview -->
-				<div class="container__preview">
+				<div class="preview">
 					<h2 class="title__preview">Preview</h2>
 					<div class="card__preview">
 						<div class="w3-third cards">

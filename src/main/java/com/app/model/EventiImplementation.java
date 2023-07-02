@@ -18,7 +18,7 @@ public class EventiImplementation {
 		
 
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			 
 			Connection conn = DriverManager.getConnection(urlDB, userName, password);
 			
