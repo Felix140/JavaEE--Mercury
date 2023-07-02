@@ -36,8 +36,9 @@ public class LoginEnti extends HttpServlet {
 			if (checkConfirmed) {
 				// Spedisci
 				RequestDispatcher dispatch = request.getRequestDispatcher("form-eventi.jsp");
-				session.setAttribute("loginUserEmail", enteEmail);
-				session.setAttribute("loginUserPass", entePassword);
+//				session.setAttribute("loginUserEmail", enteEmail);
+//				session.setAttribute("loginUserPass", entePassword);
+	
 				dispatch.forward(request, response);
 			} else {
 				response.sendRedirect("Enti-Login.html");

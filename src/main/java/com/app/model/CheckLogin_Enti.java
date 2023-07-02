@@ -8,8 +8,9 @@ public class CheckLogin_Enti {
 	public Connection connect = null;
 	String emailEnte;
 	String passwordEnte;
+	String nomeEnte;
 
-	// lo trasformo in un booleano
+	// Check delle credenziali di accesso
 	public boolean Controllo_Credenziali(String enteEmail, String entePassword) throws SQLException {
 
 		try {
@@ -42,5 +43,32 @@ public class CheckLogin_Enti {
 		connect.close();
 		return false;
 	}
+	
+//	public String estraiNome(String enteEmail, String entePassword) throws SQLException {
+//		
+//		try {
+//			Class.forName("com.mysql.cj.jdbc.Driver");
+//		} catch (ClassNotFoundException e1) {
+//			e1.printStackTrace();
+//			System.out.println("Non trovo la classe Driver");
+//		}
+//		
+//		connect = DriverManager.getConnection(url, "root", "user_mysql_14");
+//		Statement query = connect.createStatement();
+//		ResultSet result = query.executeQuery("Select*from enti");
+//		
+//		String email = result.getString("email");
+//		String password = result.getString("password");
+//		
+//		if (enteEmail.equals(email) && entePassword.equals(password)) {
+//			
+//			
+//		} else {
+//			
+//		}
+//		
+//		return entePassword;
+//		
+//	}
 	
 }

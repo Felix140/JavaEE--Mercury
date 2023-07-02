@@ -94,6 +94,11 @@
 	</head>
 
 	<body>
+		<% 
+		    // faccio prima il cast
+		    String adminName = (String)session.getAttribute("NomeAdmin");
+	    %>
+	
 
 		<!-- Header -->
 		<header class="w3-container w3-theme w3-padding" id="myHeader">
@@ -188,7 +193,7 @@
 
 			</form>
 
-			<!-- CONTAINER RCHIESTE RICEVUTE -->
+			<!-- Link per andare alla pagina mostra-eventi.jsp -->
 			<div class="container__richieste">
 				<!-- Qui va connesso alla SERVLET e NON alla JSP -->
 				<a href="Event_Servlet">Vedi gli eventi</a>
