@@ -1,5 +1,6 @@
 package com.app.controller;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 //import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -33,7 +34,14 @@ public class RegistrazioneEnti extends HttpServlet {
 		
 		Registrazione_Enti x = new Registrazione_Enti();
 		
-		x.Inserimento_Credenziali_Enti(enteNome, enteEmail, entePassword);
+		boolean regEntiConfirmed = x.Inserimento_Credenziali_Enti(enteNome, enteEmail, entePassword);
+		
+		if (regEntiConfirmed) {
+			RequestDispatcher dispatch = request.getRequestDispatcher("Enti-Login.html");
+			dispatch.forward(request, response);
+		} else {
+			response.sendRedirect("enti-registration.html");
+		}
 	}
 
 }

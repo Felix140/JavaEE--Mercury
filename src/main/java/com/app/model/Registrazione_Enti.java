@@ -17,7 +17,7 @@ public class Registrazione_Enti {
 	String enteEmail;
 	String entePassword;
 
-	public void Inserimento_Credenziali_Enti(String a, String b, String c) {
+	public boolean Inserimento_Credenziali_Enti(String a, String b, String c) {
 		this.enteNome = a;
 		this.enteEmail = b;
 		this.entePassword = c;
@@ -59,6 +59,8 @@ public class Registrazione_Enti {
 
 			// chiudi la connessione
 			connection.close();
+			
+			return true;
 
 		} catch (SQLException z) {
 
@@ -66,6 +68,7 @@ public class Registrazione_Enti {
 			System.out.println("Errore");
 
 		}
+		return false;
 
 	}
 
