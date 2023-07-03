@@ -163,6 +163,21 @@
 	word-wrap: break-word;
 }
 
+/* Newsletter */
+
+.newsletter {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	border: 2px solid rgb(0, 11, 128);
+}
+
+.newsletter__form {
+	border: 2px solid green;
+	width: 350px;
+}
 
 
 /* Footer */
@@ -291,6 +306,18 @@
 			%>
 		</div>
 	</div>
+
+	<!-- Registrazione NEWLETTER -->
+
+	<h2>Iscriviti alla newsletter</h2>
+	<div class="newsletter">
+		<form action="Newsletter" class="newsletter__form">
+			<input type="email" name="newsletter" id="newsletter" placeholder="inserisci qui la tua email" class="form-control">
+			<div id="emailHelp" class="form-text">Registrati alla Newsletter per nuovi aggiornamenti!</div>
+			<input type="submit" id="" value="INVIA" class="btn btn-secondary">
+		</form>
+	</div>
+
 	<!-- Footer -->
 	<footer class="footer">
 		<h3>Footer</h3>
