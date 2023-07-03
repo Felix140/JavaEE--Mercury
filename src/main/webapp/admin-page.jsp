@@ -67,9 +67,15 @@
 			<thead>
 				<tr>
 					<th scope="col">#</th>
-					<th scope="col">First</th>
-					<th scope="col">Last</th>
-					<th scope="col">Handle</th>
+					<th scope="col">Nome Evento</th>
+					<th scope="col">Data</th>
+					<th scope="col">Orario</th>
+					<th scope="col">Regione</th>
+					<th scope="col">Provincia</th>
+					<th scope="col">Comune</th>
+					<th scope="col">Descrizione</th>
+					<!-- BAN -->
+					<th scope="col">Stato Ban</th>
 				</tr>
 			</thead>
 			<tbody>

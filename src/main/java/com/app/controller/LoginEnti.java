@@ -26,22 +26,23 @@ public class LoginEnti extends HttpServlet {
 
 		// SESSION = prima crei l'oggetto session, poi lo setti dove ti serve, e poi lo
 		// richiami nella pagina dove ti serve
-
+		
 		HttpSession session = request.getSession();
 
 		try {
 
 			boolean checkConfirmed = checkUser.Controllo_Credenziali(enteEmail, entePassword);
+			String nomeEnte = checkUser.estraiNome(enteEmail, entePassword); // return nome dell'ente
 
 			if (checkConfirmed) {
 				// Spedisci
 				RequestDispatcher dispatch = request.getRequestDispatcher("form-eventi.jsp");
-//				session.setAttribute("loginUserEmail", enteEmail);
-//				session.setAttribute("loginUserPass", entePassword);
-	
+
+				session.setAttribute("nomeEnte", nomeEnte);
 				dispatch.forward(request, response);
 			} else {
 				response.sendRedirect("Enti-Login.html");
+//				Aggiungere alert 
 			}
 
 		} catch (SQLException e) {

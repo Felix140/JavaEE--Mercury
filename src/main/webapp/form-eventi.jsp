@@ -96,7 +96,7 @@
 	<body>
 		<% 
 		    // faccio prima il cast
-		    String adminName = (String)session.getAttribute("NomeAdmin");
+		    String ente = (String)session.getAttribute("nomeEnte");
 	    %>
 	
 
@@ -108,6 +108,7 @@
 				<h1 class="w3-xxxlarge hero__title">MERCURY</h1>
 			</div>
 		</header>
+		<h2 class="d-block m-auto">ENTE: <%= ente %></h2>
 
 		<div class="container-form">
 
