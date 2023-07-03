@@ -1,9 +1,5 @@
 @import "https://unpkg.com/open-props";
 
-* {
-    box-sizing: border-box;
-}
-
 body {
     background: var(--gradient-1);
     display: grid;
@@ -28,7 +24,6 @@ body {
     --y: -10;
     --scale: 1.1;
     --border-scale: 1;
-    background-color: wheat;
 }
 
 .main-btn:active {
