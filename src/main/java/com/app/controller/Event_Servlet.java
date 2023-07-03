@@ -27,7 +27,7 @@ public class Event_Servlet extends HttpServlet {
 		request.setAttribute("admin-all", event);
 		
 //		Qui ci richiamo il file INDEX
-		RequestDispatcher dispatch = request.getRequestDispatcher("mostra-eventi.jsp");
+		RequestDispatcher dispatch = request.getRequestDispatcher("Mostra-Eventi.jsp");
 		dispatch.forward(request, response); 
 	}
 }
