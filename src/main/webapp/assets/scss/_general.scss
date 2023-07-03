@@ -39,7 +39,7 @@
         font-size: 150px;
         background-color: transparent;
 
-        animation: color-change 4s infinite;
+        animation: color-change 2s linear infinite;
 
         @keyframes color-change {
             0% {
@@ -60,7 +60,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: transparent;
     }
 
     &__loginEnti {
@@ -83,8 +82,8 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 2px; /* Altezza del lato base */
-            background-color: wheat; /* Colore del lato base */
+            height: 2px; 
+            background-color: wheat; 
         }
     }
 

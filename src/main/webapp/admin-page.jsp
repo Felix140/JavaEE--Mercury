@@ -19,8 +19,8 @@
 			height: 100px;
 		}
 
-		.container__panoramica {
-			border: 3px solid blue;
+		.container__tabella {
+			border: 3px solid wheat;
 			height: 300px;
 		}
 
@@ -31,7 +31,7 @@
 
 		.container__richieste {
 			height: 300px;
-			border: 3px solid red;
+			border: 3px solid wheat;
 		}
 
 		.footer {
@@ -62,15 +62,43 @@
 		<h2 class="d-block m-auto">Benvenuta/o <%= adminName %></h2>
 	</div>
 
-	<div class="container__panoramica">
-		
+	<div class="container__tabella">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">First</th>
+					<th scope="col">Last</th>
+					<th scope="col">Handle</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">1</th>
+					<td>Mark</td>
+					<td>Otto</td>
+					<td>@mdo</td>
+				</tr>
+				<tr>
+					<th scope="row">2</th>
+					<td>Jacob</td>
+					<td>Thornton</td>
+					<td>@fat</td>
+				</tr>
+				<tr>
+					<th scope="row">3</th>
+					<td colspan="2">Larry the Bird</td>
+					<td>@twitter</td>
+				</tr>
+			</tbody>
+		</table>
+	
 	</div>
 
 	<div class="divisore"></div>
 
-	<!-- CONTAINER RCHIESTE RICEVUTE -->
+	
 	<div class="container__richieste">
-		<!-- Qui va connesso alla SERVLET e NON alla JSP -->
 		<a href="Event_Servlet">Vedi gli eventi</a>
 	</div>
 
