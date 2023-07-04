@@ -53,7 +53,7 @@ public class CreazioneForm extends HttpServlet {
 			request.setAttribute("admin-all", event);
 			
 			
-			RequestDispatcher dispatch = request.getRequestDispatcher("mostra-eventi.jsp");
+			RequestDispatcher dispatch = request.getRequestDispatcher("Mostra-Eventi.jsp");
 			dispatch.forward(request, response);
 			
 		} else {
